@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>MathRacer</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <div id="anim"></div>
+    <div class="content">
+        <div class="header">
+            <div class="header-left">
+                <button class="join-button">Join</button>
+                <input class="join-input" type="text" placeholder="code...">
+            </div>
+            <div class="header-right">
+                <input class="join-input" type="text" placeholder="Nick...">
+                <input type="color" class="color-picker">
+            </div>
+        </div>
+        <div class="image-aligner">
+            
+        </div>
+        <div class="center-info">
+            <button>Create Room</button>
+            <button>Join Room</button>
+            <button>Credits</button>
+        </div>
+        <div class="math-text">
+            <image class="math-img" src="/images/math.png">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.3/lottie.min.js" integrity="sha512-35O/v2b9y+gtxy3HK+G3Ah60g1hGfrxv67nL6CJ/T56easDKE2TAukzxW+/WOLqyGE7cBg0FR2KhiTJYs+FKrw==" crossorigin="anonymous"></script>
+    <script>
+        let socket = io();
+        let animation = bodymovin.loadAnimation({
+            container: document.getElementById('anim'),
+            rederer:'svg',
+            loop:true,
+            autoplay:true,
+            path:'data',
+        })
+        let vue = new Vue({
+            el:'#app',
+            created(){
+                console.log('Funfou')
+            }
+        })
+    </script>
+</body>
+<style lang="scss">
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+    *{
+        margin: 0px;
+        padding:0px;
+        font-size: 62.5%;
+        box-sizing: border-box;
+    }
+    .content{
+        background-image: url('/images/background.jpg');
+        background-size: 100% 100%;
+        width: 100%;
+        height:100%; 
+    }
+    .header{
+        width: 100%;
+        padding-top: 44px;
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+    }
+    .color-picker{
+        width: 10rem;
+        height:10rem;
+    }
+    .join-input{
+        padding:.2rem;
+        background:#4F5169;
+        outline:none;
+        width: 40%;
+        border: none;
+        text-indent: 3.7rem;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 40px;
+        color: #FFFFFF;
+        border-left: 7px solid #888999;
+    }
+    .join-input::placeholder{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 40px;
+        color: #9C9C9C;
+    }
+    .join-button{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        cursor:pointer;
+        margin-right: 41px;
+        padding: .2rem;
+        padding-right: 4rem;
+        padding-left: 4rem;
+        font-size: 4rem;
+        color: #FFFFFF;
+        background:#4F5169;
+        outline:none;
+        border: none;
+        border-left: 7px solid #888999;
+    }
+    .header-left{
+        width: 60%;
+        display:flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+    .header-right{
+        width: 40%;
+        padding-left: 20px;
+        display:flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    #anim{
+        width: 99%;
+        pointer-events:none;
+        height:99%;
+        position: absolute;
+    }
+    body{
+        width: 100vw;
+        overflow:hidden;
+        height:100vh;
+    }
+    image{
+        background-size:cover;
+    }
+    .math-text{
+        text-align: right;
+        margin-top: 40vh;
+        pointer-events:none;
+        padding-left: 38%;
+        overflow: hidden;
+        position: absolute;
+        opacity: 0.2;  
+    }
+    .math-img{
+        min-width: 60%;
+        min-height: 50%; 
+    }
+</style>
+</html>
