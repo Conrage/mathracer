@@ -7,6 +7,15 @@ const { v4: uuidv4 } = require("uuid");
 app.get("/data", (req, res) => {
   res.sendFile(__dirname + "/data.json");
 });
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+})
+app.get('/images/:img', (req, res) => {
+    res.sendFile(__dirname + '/images/'+req.params.img);
+})
+app.get('/game', (req, res) => {
+  res.sendFile(__dirname + '/ingame.html');
+})
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
