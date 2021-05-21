@@ -12,6 +12,9 @@ app.get('/', (req, res) => {
 app.get('/images/:img', (req, res) => {
     res.sendFile(__dirname + '/images/'+req.params.img);
 })
+app.get('/game', (req, res) => {
+  res.sendFile(__dirname + '/ingame.html');
+})
 
 const io = require('socket.io')(httpServer, {
     cors:{
